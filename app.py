@@ -37,7 +37,6 @@ CLEAN_POLIBRA_SVG = """<svg width="260" height="60" viewBox="0 0 260 60" fill="n
 svg_b64 = base64.b64encode(CLEAN_POLIBRA_SVG.encode('utf-8')).decode('utf-8')
 POLIBRA_LOGO_IMG = f"data:image/svg+xml;base64,{svg_b64}"
 
-# MENŞEİ SEÇENEKLERİ LİSTESİ
 MENSEI_LISTESI = ["Lokal", "Çin", "Avrupa", "USA", "Endonezya", "Güney Kore"]
 
 st.markdown("""
@@ -472,7 +471,7 @@ with tab2:
             st.rerun()
 
 # ==========================================
-# SEKTÖR 3: REÇETE MALİYET HESABI
+# SEKTÖR 3: REÇETE MALİYET HESABI (BİREBİR REÇETE BATCH KG YANSITILDI)
 # ==========================================
 with tab3:
     st.subheader("💰 Net Landed Cost (Net Varış Maliyeti) ile Reçete Hesaplama")
@@ -481,7 +480,14 @@ with tab3:
     with col_m1:
         maliyet_recete_sec = st.selectbox("Maliyeti Hesaplanacak Reçete", list(st.session_state.receteler.keys()), key="m_recete")
         rec_data = st.session_state.receteler[maliyet_recete_sec]
-        batch_size_kg = st.number_input("Batch Ağırlığı (KG)", min_value=1.0, value=float(rec_data.get("batch_kg", 1000.0)), step=50.0)
+        
+        # Reçete tanımındaki orijinal batch_kg değerini al
+        rec_icerik_maliyet = rec_data.get("icerik", {})
+        gercek_recete_batch_kg = sum(item.get("batch_kg", 0.0) for item in rec_icerik_maliyet.values())
+        if gercek_recete_batch_kg == 0:
+            gercek_recete_batch_kg = float(rec_data.get("batch_kg", 1000.0))
+
+        batch_size_kg = st.number_input("Batch Ağırlığı (KG)", min_value=1.0, value=float(gercek_recete_batch_kg), step=50.0, key="m_batch_kg_v28")
 
     with col_m2:
         if st.session_state.get("can_undo", False):
@@ -489,20 +495,19 @@ with tab3:
                 undo_yap()
                 st.rerun()
 
-    rec_icerik = rec_data.get("icerik", {})
-    toplam_b_kg = sum(item.get("batch_kg", 0.0) for item in rec_icerik.values())
-    toplam_phr_val = sum(item.get("phr", 0.0) for item in rec_icerik.values())
+    toplam_phr_val = sum(item.get("phr", 0.0) for item in rec_icerik_maliyet.values())
 
     maliyet_tablosu = []
     toplam_maliyet_usd = 0.0
 
-    for hammadde, val in rec_icerik.items():
-        b_kg = val.get("batch_kg", 0.0)
-        phr = val.get("phr", 0.0)
+    for hammadde, val in rec_icerik_maliyet.items():
+        b_kg = float(val.get("batch_kg", 0.0))
+        phr = float(val.get("phr", 0.0))
         if b_kg == 0 and phr == 0:
             continue
         
-        batch_miktari_kg = (b_kg / toplam_b_kg) * batch_size_kg if toplam_b_kg > 0 else 0
+        # Doğrudan reçetedeki orjinal batch miktarını yansıt
+        batch_miktari_kg = b_kg
 
         detay = st.session_state.stoklar.get(hammadde, {})
         usd_kg = float(detay.get("usd_kg", 1.0000))
@@ -536,7 +541,7 @@ with tab3:
     edited_maliyet = st.data_editor(
         df_maliyet,
         use_container_width=True,
-        key="maliyet_editor",
+        key="maliyet_editor_v28",
         column_config={
             "Landed Cost (USD/KG)": st.column_config.NumberColumn(
                 "Landed Cost (USD/KG)", 
@@ -588,7 +593,7 @@ with tab4:
 
     c_sel1, c_sel2 = st.columns([2.5, 1.5])
     with c_sel1:
-        duzenlenecek_recete = st.selectbox("Düzenlenecek / İncelediğiniz Reçete", list(st.session_state.receteler.keys()), key="edit_rec_select_v27")
+        duzenlenecek_recete = st.selectbox("Düzenlenecek / İncelediğiniz Reçete", list(st.session_state.receteler.keys()), key="edit_rec_select_v28")
     with c_sel2:
         st.write("<br>", unsafe_allow_html=True)
         btn_txt = "❌ Kapat" if st.session_state.show_new_recipe_form else "➕ Yeni Reçete Oluştur"
@@ -620,7 +625,7 @@ with tab4:
             st.session_state.new_rec_rows,
             num_rows="dynamic",
             use_container_width=True,
-            key="new_rec_editor_v27",
+            key="new_rec_editor_v28",
             column_config={
                 "Ürün Kodu": st.column_config.SelectboxColumn(
                     "Ürün Kodu (Stoktan Seç)",
@@ -630,7 +635,7 @@ with tab4:
             }
         )
 
-        target_phr_new = st.number_input("🎯 Bu Reçetenin Toplam Kullanım Oranı (PHR)", min_value=0.01, value=3.5, format="%.4f", step=0.1, key="target_phr_new_v27")
+        target_phr_new = st.number_input("🎯 Bu Reçetenin Toplam Kullanım Oranı (PHR)", min_value=0.01, value=3.5, format="%.4f", step=0.1, key="target_phr_new_v28")
 
         if st.button("💾 Yeni Reçeteyi Hesapla, Kaydet ve Listeye Ekle", type="primary", use_container_width=True):
             if not yeni_recete_kodu.strip():
@@ -667,7 +672,7 @@ with tab4:
     c_scale1, c_scale2 = st.columns([2, 3])
     with c_scale1:
         mevcut_phr_sum = sum(val.get("phr", 0.0) for val in rec_icerik.values())
-        target_phr = st.number_input("🎯 Hedef Reçete Kullanım Oranı (PHR)", min_value=0.01, value=float(mevcut_phr_sum) if mevcut_phr_sum > 0 else 3.5, format="%.4f", step=0.1, key="target_phr_v27")
+        target_phr = st.number_input("🎯 Hedef Reçete Kullanım Oranı (PHR)", min_value=0.01, value=float(mevcut_phr_sum) if mevcut_phr_sum > 0 else 3.5, format="%.4f", step=0.1, key="target_phr_v28")
     
     with c_scale2:
         st.write("<br>", unsafe_allow_html=True)
@@ -720,7 +725,7 @@ with tab4:
         df_rec_edit,
         num_rows="dynamic",
         use_container_width=True,
-        key="recete_table_editor_v27",
+        key="recete_table_editor_v28",
         disabled=["Kimyasal Tanımı"],
         column_config={
             "Ürün Kodu": st.column_config.SelectboxColumn(
@@ -769,6 +774,7 @@ with tab4:
                         yeni_icerik[kod_val] = {"phr": phr_val, "batch_kg": b_kg_val}
 
             st.session_state.receteler[duzenlenecek_recete]["icerik"] = yeni_icerik
+            st.session_state.receteler[duzenlenecek_recete]["batch_kg"] = sum(x["batch_kg"] for x in yeni_icerik.values())
             st.success(f"🎉 '{duzenlenecek_recete}' reçetesi başarıyla kaydedildi!")
             st.rerun()
 
@@ -842,7 +848,7 @@ with tab5:
         df_stok_edit,
         num_rows="dynamic",
         use_container_width=True,
-        key="stok_table_editor_v27",
+        key="stok_table_editor_v28",
         column_config={
             "Menşei": st.column_config.SelectboxColumn(
                 "Menşei",
