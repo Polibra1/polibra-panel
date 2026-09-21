@@ -12,7 +12,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# GÖNDERİLEN ORİJİNAL POLİBRA LOGOSUNUN TAM TEMİZ SVG KODU (YORUM SATIRSIZ)
+# GÖNDERİLEN ORİJİNAL POLİBRA LOGOSUNUN TAM TEMİZ SVG KODU
 CLEAN_POLIBRA_SVG = """<svg width="260" height="60" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg">
 <text x="10" y="42" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="300" font-size="34" fill="#000000" letter-spacing="1.5">ПОЛИБРА</text>
 <path d="M195 27 L212 17 L220 32 Z" fill="url(#blue_grad)"/>
@@ -34,11 +34,12 @@ CLEAN_POLIBRA_SVG = """<svg width="260" height="60" viewBox="0 0 260 60" fill="n
 </defs>
 </svg>"""
 
-# SVG'Yİ KUSURSUZ RENDER İÇİN BASE64 DATA URI'YE DÖNÜŞTÜRME
 svg_b64 = base64.b64encode(CLEAN_POLIBRA_SVG.encode('utf-8')).decode('utf-8')
 POLIBRA_LOGO_IMG = f"data:image/svg+xml;base64,{svg_b64}"
 
-# KURUMSAL ARAYÜZ VE BAŞLIK STİLLERİ
+# MENŞEİ SEÇENEKLERİ LİSTESİ
+MENSEI_LISTESI = ["Lokal", "Çin", "Avrupa", "USA", "Endonezya", "Güney Kore"]
+
 st.markdown("""
 <style>
     .stApp {
@@ -217,7 +218,7 @@ if "user" not in st.session_state:
     st.session_state.user = ""
 
 # ==========================================
-# EKRAN 1: KULLANICI GİRİŞİ (ORİJİNAL LOGOLU - BASE64)
+# EKRAN 1: KULLANICI GİRİŞİ
 # ==========================================
 if not st.session_state.logged_in:
     c1, c2, c3 = st.columns([1, 1.2, 1])
@@ -247,7 +248,7 @@ if not st.session_state.logged_in:
     st.stop()
 
 # ==========================================
-# EKRAN 2: ANA PROGRAM (ORİJİNAL LOGOLU - BASE64)
+# EKRAN 2: ANA PROGRAM
 # ==========================================
 if "stoklar" not in st.session_state:
     veri_yukle()
@@ -587,7 +588,7 @@ with tab4:
 
     c_sel1, c_sel2 = st.columns([2.5, 1.5])
     with c_sel1:
-        duzenlenecek_recete = st.selectbox("Düzenlenecek / İncelediğiniz Reçete", list(st.session_state.receteler.keys()), key="edit_rec_select_v25")
+        duzenlenecek_recete = st.selectbox("Düzenlenecek / İncelediğiniz Reçete", list(st.session_state.receteler.keys()), key="edit_rec_select_v27")
     with c_sel2:
         st.write("<br>", unsafe_allow_html=True)
         btn_txt = "❌ Kapat" if st.session_state.show_new_recipe_form else "➕ Yeni Reçete Oluştur"
@@ -619,7 +620,7 @@ with tab4:
             st.session_state.new_rec_rows,
             num_rows="dynamic",
             use_container_width=True,
-            key="new_rec_editor_v25",
+            key="new_rec_editor_v27",
             column_config={
                 "Ürün Kodu": st.column_config.SelectboxColumn(
                     "Ürün Kodu (Stoktan Seç)",
@@ -629,7 +630,7 @@ with tab4:
             }
         )
 
-        target_phr_new = st.number_input("🎯 Bu Reçetenin Toplam Kullanım Oranı (PHR)", min_value=0.01, value=3.5, format="%.4f", step=0.1, key="target_phr_new_v25")
+        target_phr_new = st.number_input("🎯 Bu Reçetenin Toplam Kullanım Oranı (PHR)", min_value=0.01, value=3.5, format="%.4f", step=0.1, key="target_phr_new_v27")
 
         if st.button("💾 Yeni Reçeteyi Hesapla, Kaydet ve Listeye Ekle", type="primary", use_container_width=True):
             if not yeni_recete_kodu.strip():
@@ -666,7 +667,7 @@ with tab4:
     c_scale1, c_scale2 = st.columns([2, 3])
     with c_scale1:
         mevcut_phr_sum = sum(val.get("phr", 0.0) for val in rec_icerik.values())
-        target_phr = st.number_input("🎯 Hedef Reçete Kullanım Oranı (PHR)", min_value=0.01, value=float(mevcut_phr_sum) if mevcut_phr_sum > 0 else 3.5, format="%.4f", step=0.1, key="target_phr_v25")
+        target_phr = st.number_input("🎯 Hedef Reçete Kullanım Oranı (PHR)", min_value=0.01, value=float(mevcut_phr_sum) if mevcut_phr_sum > 0 else 3.5, format="%.4f", step=0.1, key="target_phr_v27")
     
     with c_scale2:
         st.write("<br>", unsafe_allow_html=True)
@@ -719,7 +720,7 @@ with tab4:
         df_rec_edit,
         num_rows="dynamic",
         use_container_width=True,
-        key="recete_table_editor_v25",
+        key="recete_table_editor_v27",
         disabled=["Kimyasal Tanımı"],
         column_config={
             "Ürün Kodu": st.column_config.SelectboxColumn(
@@ -820,6 +821,10 @@ with tab5:
     
     stok_listesi = []
     for hammadde, val in st.session_state.stoklar.items():
+        mensei_val = val.get("mensei", "Lokal")
+        if mensei_val not in MENSEI_LISTESI:
+            mensei_val = "Lokal"
+
         stok_listesi.append({
             "Seç / Sil": False,
             "Kimyasal Tanımı": val.get("tanim", "-"),
@@ -827,7 +832,7 @@ with tab5:
             "Depo Stoku (KG)": float(val["depo_stok"]),
             "Yoldaki Stok (KG)": float(val["yoldaki_stok"]),
             "Tedarik (Gün)": int(val["lead_time"]),
-            "Menşei": val["mensei"],
+            "Menşei": mensei_val,
             "Landed Cost (USD/KG)": float(val.get("usd_kg", 1.0000))
         })
     
@@ -837,7 +842,14 @@ with tab5:
         df_stok_edit,
         num_rows="dynamic",
         use_container_width=True,
-        key="stok_table_editor_v25"
+        key="stok_table_editor_v27",
+        column_config={
+            "Menşei": st.column_config.SelectboxColumn(
+                "Menşei",
+                options=MENSEI_LISTESI,
+                required=True
+            )
+        }
     )
 
     col_s1, col_s2, col_s3 = st.columns(3)

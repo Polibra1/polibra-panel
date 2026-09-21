@@ -37,7 +37,7 @@
             "depo_stok": 3392.8700390790345,
             "yoldaki_stok": 0.0,
             "lead_time": 60,
-            "mensei": "Diğer",
+            "mensei": "Endonezya",
             "usd_kg": 2.285
         },
         "ZNS 200": {
@@ -45,7 +45,7 @@
             "depo_stok": 11246.793920896947,
             "yoldaki_stok": 0.0,
             "lead_time": 7,
-            "mensei": "Diğer",
+            "mensei": "Endonezya",
             "usd_kg": 2.675
         },
         "PL 390": {
@@ -213,7 +213,7 @@
             "depo_stok": 6200.0,
             "yoldaki_stok": 0.0,
             "lead_time": 30,
-            "mensei": "Hindistan",
+            "mensei": "Lokal",
             "usd_kg": 2.5
         },
         "Aerosil R 972": {
