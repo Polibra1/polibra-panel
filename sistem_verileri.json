@@ -1,0 +1,356 @@
+{
+    "stoklar": {
+        "Askom 70T": {
+            "tanim": "Kalsit",
+            "depo_stok": 16799.305488783237,
+            "yoldaki_stok": 0.0,
+            "lead_time": 60,
+            "mensei": "Lokal",
+            "usd_kg": 0.362
+        },
+        "HL 125": {
+            "tanim": "PA",
+            "depo_stok": 15032.5298034236,
+            "yoldaki_stok": 2000.0,
+            "lead_time": 15,
+            "mensei": "Çin",
+            "usd_kg": 2.766
+        },
+        "HL 225": {
+            "tanim": "PA",
+            "depo_stok": 550.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 15,
+            "mensei": "Çin",
+            "usd_kg": 1.25
+        },
+        "HL 100": {
+            "tanim": "PA",
+            "depo_stok": 1300.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 15,
+            "mensei": "Çin",
+            "usd_kg": 1.18
+        },
+        "CAS 200": {
+            "tanim": "Calcium Stearate",
+            "depo_stok": 3392.8700390790345,
+            "yoldaki_stok": 0.0,
+            "lead_time": 60,
+            "mensei": "Diğer",
+            "usd_kg": 2.285
+        },
+        "ZNS 200": {
+            "tanim": "Zinc Stearate",
+            "depo_stok": 11246.793920896947,
+            "yoldaki_stok": 0.0,
+            "lead_time": 7,
+            "mensei": "Diğer",
+            "usd_kg": 2.675
+        },
+        "PL 390": {
+            "tanim": "Hydrotalcite",
+            "depo_stok": 1909.1422351829438,
+            "yoldaki_stok": 0.0,
+            "lead_time": 45,
+            "mensei": "Çin",
+            "usd_kg": 3.262
+        },
+        "AC 390": {
+            "tanim": "Hydrotalcite",
+            "depo_stok": 700.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 45,
+            "mensei": "Çin",
+            "usd_kg": 3.4
+        },
+        "Nikomag A7": {
+            "tanim": "Magnesium hydroxide",
+            "depo_stok": 189.38599976375383,
+            "yoldaki_stok": 0.0,
+            "lead_time": 60,
+            "mensei": "Lokal",
+            "usd_kg": 3.0
+        },
+        "PO CAC": {
+            "tanim": "Calcium acetylacetonate",
+            "depo_stok": 4599.3859997637555,
+            "yoldaki_stok": 0.0,
+            "lead_time": 7,
+            "mensei": "Çin",
+            "usd_kg": 3.988
+        },
+        "Calcium acetylacetonate": {
+            "tanim": "Calcium acetylacetonate",
+            "depo_stok": 575.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 7,
+            "mensei": "Çin",
+            "usd_kg": 4.1
+        },
+        "PO SB": {
+            "tanim": "Steorail bezoil Metan",
+            "depo_stok": 3229.1422351829438,
+            "yoldaki_stok": 0.0,
+            "lead_time": 7,
+            "mensei": "Çin",
+            "usd_kg": 8.82
+        },
+        "PO 125 A": {
+            "tanim": "Theic",
+            "depo_stok": 3529.1422351829438,
+            "yoldaki_stok": 0.0,
+            "lead_time": 7,
+            "mensei": "Çin",
+            "usd_kg": 2.863
+        },
+        "Theic": {
+            "tanim": "Theic",
+            "depo_stok": 875.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 7,
+            "mensei": "Çin",
+            "usd_kg": 3.0
+        },
+        "BPA CCP": {
+            "tanim": "BPA",
+            "depo_stok": 651.3940783943144,
+            "yoldaki_stok": 0.0,
+            "lead_time": 60,
+            "mensei": "Çin",
+            "usd_kg": 2.352
+        },
+        "BPA TOZ": {
+            "tanim": "BPA",
+            "depo_stok": 25.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 60,
+            "mensei": "Çin",
+            "usd_kg": 2.15
+        },
+        "EW 169": {
+            "tanim": "Ester wax",
+            "depo_stok": 4615.517529161622,
+            "yoldaki_stok": 0.0,
+            "lead_time": 15,
+            "mensei": "Çin",
+            "usd_kg": 4.163
+        },
+        "RL 59": {
+            "tanim": "Ester wax",
+            "depo_stok": 450.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 15,
+            "mensei": "Çin",
+            "usd_kg": 2.85
+        },
+        "RL 69": {
+            "tanim": "Ester wax",
+            "depo_stok": 1200.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 15,
+            "mensei": "Çin",
+            "usd_kg": 2.95
+        },
+        "PEW 20": {
+            "tanim": "PE WAX - HİGH GRADE",
+            "depo_stok": 5840.517529161622,
+            "yoldaki_stok": 0.0,
+            "lead_time": 15,
+            "mensei": "Çin",
+            "usd_kg": 3.514
+        },
+        "RL 200": {
+            "tanim": "PE WAX - HİGH GRADE",
+            "depo_stok": 1675.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 15,
+            "mensei": "Çin",
+            "usd_kg": 1.65
+        },
+        "PEW 220": {
+            "tanim": "PE WAX",
+            "depo_stok": 19400.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 15,
+            "mensei": "Çin",
+            "usd_kg": 1.4
+        },
+        "Syntowax": {
+            "tanim": "PE WAX",
+            "depo_stok": 760.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 15,
+            "mensei": "Lokal",
+            "usd_kg": 1.5
+        },
+        "FT 110 A": {
+            "tanim": "FT WAX",
+            "depo_stok": 6872.216587721111,
+            "yoldaki_stok": 0.0,
+            "lead_time": 7,
+            "mensei": "Çin",
+            "usd_kg": 3.77
+        },
+        "RL 110 A": {
+            "tanim": "FT WAX",
+            "depo_stok": 2100.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 7,
+            "mensei": "Çin",
+            "usd_kg": 1.85
+        },
+        "Kope97": {
+            "tanim": "Oxidized polyethylene wax",
+            "depo_stok": 10918.508070460384,
+            "yoldaki_stok": 0.0,
+            "lead_time": 30,
+            "mensei": "Avrupa",
+            "usd_kg": 4.5
+        },
+        "MLA Lead St.": {
+            "tanim": "Lead Stearate",
+            "depo_stok": 6200.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 30,
+            "mensei": "Hindistan",
+            "usd_kg": 2.5
+        },
+        "Aerosil R 972": {
+            "tanim": "Silicon oxide",
+            "depo_stok": 440.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 30,
+            "mensei": "Avrupa",
+            "usd_kg": 8.5
+        },
+        "MAVİ": {
+            "tanim": "Pigment",
+            "depo_stok": 79.1282478417939,
+            "yoldaki_stok": 0.0,
+            "lead_time": 7,
+            "mensei": "Çin",
+            "usd_kg": 5.65
+        },
+        "MOR": {
+            "tanim": "Pigment",
+            "depo_stok": 33.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 7,
+            "mensei": "Çin",
+            "usd_kg": 15.0
+        },
+        "BSK PVC": {
+            "tanim": "PVC",
+            "depo_stok": 1100.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 7,
+            "mensei": "Lokal",
+            "usd_kg": 1.1
+        },
+        "Andcarb CT2K": {
+            "tanim": "Kalsit",
+            "depo_stok": 175.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 7,
+            "mensei": "Avrupa",
+            "usd_kg": 0.18
+        },
+        "Niğtaş": {
+            "tanim": "Kalsit",
+            "depo_stok": 75.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 7,
+            "mensei": "Avrupa",
+            "usd_kg": 0.12
+        },
+        "SPK": {
+            "tanim": "SPK",
+            "depo_stok": 175.0,
+            "yoldaki_stok": 0.0,
+            "lead_time": 7,
+            "mensei": "Çin",
+            "usd_kg": 1.0
+        }
+    },
+    "receteler": {
+        "ORS-5 PB": {
+            "batch_kg": 1000.0,
+            "icerik": {
+                "Askom 70T": {
+                    "phr": 1.0508,
+                    "batch_kg": 61.0
+                },
+                "HL 125": {
+                    "phr": 0.3704,
+                    "batch_kg": 21.5
+                },
+                "CAS 200": {
+                    "phr": 0.1016,
+                    "batch_kg": 5.9
+                },
+                "ZNS 200": {
+                    "phr": 0.4996,
+                    "batch_kg": 29.0
+                },
+                "PL 390": {
+                    "phr": 0.0827,
+                    "batch_kg": 4.8
+                },
+                "Nikomag A7": {
+                    "phr": 0.1757,
+                    "batch_kg": 10.2
+                },
+                "PO CAC": {
+                    "phr": 0.1757,
+                    "batch_kg": 10.2
+                },
+                "PO SB": {
+                    "phr": 0.0827,
+                    "batch_kg": 4.8
+                },
+                "PO 125 A": {
+                    "phr": 0.0827,
+                    "batch_kg": 4.8
+                },
+                "BPA CCP": {
+                    "phr": 0.0276,
+                    "batch_kg": 1.6
+                },
+                "EW 169": {
+                    "phr": 0.186,
+                    "batch_kg": 10.8
+                },
+                "PEW 20": {
+                    "phr": 0.186,
+                    "batch_kg": 10.8
+                },
+                "FT 110 A": {
+                    "phr": 0.3824,
+                    "batch_kg": 22.2
+                },
+                "Kope97": {
+                    "phr": 0.0951,
+                    "batch_kg": 5.52
+                },
+                "MAVİ": {
+                    "phr": 0.001,
+                    "batch_kg": 0.058
+                },
+                "MOR": {
+                    "phr": 0.0,
+                    "batch_kg": 0.0
+                }
+            }
+        }
+    },
+    "uretim_gecmisi": [
+        {
+            "İptal Et": false,
+            "Tarih": "09.09.2026",
+            "İş Emri No": "IE-20260920-1520",
+            "Reçete": "ORS-5 PB",
+            "Üretilen Miktar (KG)": 3000.0
+        }
+    ]
+}
